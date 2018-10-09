@@ -1,13 +1,13 @@
 require("dotenv").config();
 
-var Keys = require("./keys.js")
+var keys = require("./keys.js")
 var request = require('request');
 var moment = require('moment');
+var Spotify = require('node-spotify-api');
 
-//var spotify = new Spotify(keys.spotify);
+var spotify = new Spotify(keys.spotify);
 
 var whattodo = process.argv[2];
-
 var getThing = function() {
     for(i=3;i<process.argv.length;i++) {
         if(i==3) {
@@ -29,9 +29,6 @@ var isEmpty = function(obj) {
 
 if(whattodo == "concert-this") {
     var artist = getThing();
-    if(artist == null) {
-        artist = "Ace of Base"
-    }
     var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
     request(queryURL, function (error, response, body) {
         if(error) {
@@ -62,7 +59,17 @@ if(whattodo == "concert-this") {
 }
 
 if(whattodo == "spotify-this-song") {
-
+    var song = getThing();
+    if(song == null) {
+        song = "The Sign"
+    }
+    
+    spotify.search({ type: 'track', query: song, limit: 1 }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+        console.log(data.tracks.items[0].artists[0].name); 
+      });
 }
 
 if(whattodo == "movie-this") {
