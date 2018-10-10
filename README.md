@@ -10,3 +10,6 @@ The main function is to take user input, or input from a file, and retrieve info
 Some problems encountered and solved: 
 Different criteria for urls used to request information from API's.
 Differently returned responses from API's and finding where to get the information. 
+
+![GitHub Logo](/)
+Format: ![Alt Text](url)
