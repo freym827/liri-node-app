@@ -107,6 +107,10 @@ var spotifyfun = function(a) {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
+        if(data.tracks.items[0] == null) {
+            console.log("No one has made this song yet")
+            return;
+        }
         console.log("Artist: " + data.tracks.items[0].artists[0].name); 
         console.log("Album: " + data.tracks.items[0].album.name)
         console.log("Song: " + data.tracks.items[0].name)
