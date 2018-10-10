@@ -34,12 +34,7 @@ var isEmpty = function(obj) {
 }
 //getting movie info
 var moviefun = function(a) {
-    //uses either user input, or input from random.txt
-    if(a == 1) {
-        var movie = getThing()
-    }else {
-        var movie = a;
-    }
+    var movie = a;
     //if we have no input
     if(movie == null) {
         movie = "Mr. Nobody"
@@ -71,12 +66,7 @@ var moviefun = function(a) {
 
 //getting info, making call, loopint through response to get all concert info
 var concertfun = function(a) {
-    if(a == 1) {
-        var artist = getThing()
-    }else {
-        //omdb appears to not like quotes in their url
-        var artist = a.substring(1, a.length-1);;
-    }
+    var artist = a;
     var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
     request(queryURL, function (error, response, body) {
         if(error) {
@@ -108,11 +98,7 @@ var concertfun = function(a) {
 
 //getting info, searching spotify, going through weird response to find normal info
 var spotifyfun = function(a) {
-    if(a == 1) {
-        var song = getThing()
-    } else {
-        var song = a;
-    }
+    var song = a
     if(song == null) {
         song = "The Sign"
     }
@@ -130,15 +116,15 @@ var spotifyfun = function(a) {
 
 //when we use each function. passing in which route we would like to take
 if(whattodo == "concert-this") {
-    concertfun(1)
+    concertfun(getThing())
 }
 
 if(whattodo == "spotify-this-song") {
-    spotifyfun(1)
+    spotifyfun(getThing())
 }
 
 if(whattodo == "movie-this") {
-    moviefun(1)
+    moviefun(getThing())
 }
 
 //reading file random.txt, splitting between the command and the search info,
@@ -146,12 +132,13 @@ if(whattodo == "movie-this") {
 if(whattodo == "do-what-it-says") {
     fs.readFile('random.txt', "utf-8", function(err, data) {
         var arr = data.split(",")
+        var pass = arr[1].substring(1, arr[1].length-1)
         if(arr[0] == "spotify-this-song") {
-            spotifyfun(arr[1])
+            spotifyfun(pass)
         }else if(arr[0] == "movie-this") {
-            moviefun(arr[1])
+            moviefun(pass)
         }else if(arr[0] == "concert-this") {
-            concertfun(arr[1])
+            concertfun(pass)
         }
     });
 }
