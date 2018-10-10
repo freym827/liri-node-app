@@ -11,5 +11,5 @@ Some problems encountered and solved:
 Different criteria for urls used to request information from API's.
 Differently returned responses from API's and finding where to get the information. 
 
-![GitHub Logo](/)
+![GitHub Logo](images/badinput.png)
 Format: ![Alt Text](url)
