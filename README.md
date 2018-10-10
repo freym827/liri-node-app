@@ -9,7 +9,22 @@ The main function is to take user input, or input from a file, and retrieve info
 
 Some problems encountered and solved: 
 Different criteria for urls used to request information from API's.
-Differently returned responses from API's and finding where to get the information. 
+Differently returned responses from API's and finding where to get the information.
 
-![GitHub Logo](images/badinput.png)
-Format: ![Alt Text](url)
+this shows the ouput of the concert function
+![concert](images/concert.png)
+
+this shows the ouput of the movie function
+![movie](images/movie.png)
+
+this shows the ouput of the song function
+![spotify](images/spotify.png)
+
+this shows the handling of some bad possible inputs for each function
+![badinput](images/badinput.png)
+
+the random file the program can read from
+![ranfile](images/random.png)
+
+and it working
+![ranoutput](images/randomworks.png)
